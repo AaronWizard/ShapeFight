@@ -43,7 +43,7 @@ func set_cell_diameter(value: int) -> void:
 func set_cell_offset(value: Vector2) -> void:
 	if has_node("Centre/Offset"):
 		cell_offset = value
-		$Centre/Offset.position = value * cell_size
+		($Centre/Offset as Node2D).position = value * cell_size
 
 func snap_to_closest_cell() -> void:
 	var cell_pos := position / cell_size
@@ -56,7 +56,7 @@ func _recalculate_position() -> void:
 
 func _recalculate_centre() -> void:
 	if has_node("Centre"):
-		$Centre.position = (cell_size * cell_diameter) / 2.0
+		($Centre as Node2D).position = (cell_size * cell_diameter) / 2.0
 
 func _draw() -> void:
 	if not Engine.editor_hint:
@@ -65,3 +65,14 @@ func _draw() -> void:
 	var size := cell_size * cell_diameter
 	var rect := Rect2(Vector2(), size)
 	draw_rect(rect, Color(1, 0, 1), false)
+
+func _get_occupied_cells(origin: Vector2 = Vector2()) -> Array:
+	var result := []
+	for x in range(cell_diameter):
+		for y in range(cell_diameter):
+			var cell := Vector2(x, y) + origin
+			result.append(cell)
+	return result
+
+func get_occupied_cells() -> Array:
+	return _get_occupied_cells(cell_position)

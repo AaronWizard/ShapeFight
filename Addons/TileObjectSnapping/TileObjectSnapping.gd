@@ -9,7 +9,7 @@ func handles(object: Object) -> bool:
 
 func edit(object: Object) -> void:
 	assert(object is TileObject)
-	tile_object = object
+	tile_object = object as TileObject
 
 func make_visible(visible: bool) -> void:
 	if not tile_object:

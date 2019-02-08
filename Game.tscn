@@ -20,7 +20,7 @@ script = ExtResource( 2 )
 
 [node name="Hero" parent="MapContainer/Map" instance=ExtResource( 3 )]
 position = Vector2( 0, 80 )
-cell_position = Vector2( 0, 5 )
+cell_position = Vector2( 1, 5 )
 
 [node name="Enemy" parent="MapContainer/Map" instance=ExtResource( 4 )]
 position = Vector2( 64, 48 )
@@ -47,6 +47,6 @@ position = Vector2( 192, 32 )
 cell_position = Vector2( 12, 2 )
 
 [node name="BigEnemy" parent="MapContainer/Map" instance=ExtResource( 5 )]
-position = Vector2( 224, 80 )
-cell_position = Vector2( 14, 5 )
+position = Vector2( 256, 80 )
+cell_position = Vector2( 16, 5 )
 

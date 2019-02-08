@@ -66,7 +66,7 @@ func _draw() -> void:
 	var rect := Rect2(Vector2(), size)
 	draw_rect(rect, Color(1, 0, 1), false)
 
-func _get_occupied_cells(origin: Vector2 = Vector2()) -> Array:
+func get_occupied_cell_at(origin: Vector2 = Vector2()) -> Array:
 	var result := []
 	for x in range(cell_diameter):
 		for y in range(cell_diameter):
@@ -75,4 +75,4 @@ func _get_occupied_cells(origin: Vector2 = Vector2()) -> Array:
 	return result
 
 func get_occupied_cells() -> Array:
-	return _get_occupied_cells(cell_position)
+	return get_occupied_cell_at(cell_position)

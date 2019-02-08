@@ -10,4 +10,5 @@ func _ready() -> void:
 		get_actor().controller = self
 
 func get_action() -> void:
+	yield(get_tree(), "idle_frame") # Is an asynchronous method
 	print(name, ': Must implement get_action')

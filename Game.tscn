@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Resources/BasicTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Maps/Map.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Actors/Controllers/Player.gd" type="Script" id=4]
 [ext_resource path="res://Actors/Types/Enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Actors/Types/BigEnemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://TurnProcessor.gd" type="Script" id=7]
 
 [node name="Game" type="Node"]
 
@@ -13,6 +14,7 @@
 position = Vector2( 0, 4 )
 
 [node name="Map" type="TileMap" parent="MapContainer"]
+editor/display_folded = true
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
@@ -53,4 +55,8 @@ cell_position = Vector2( 12, 2 )
 [node name="BigEnemy" parent="MapContainer/Map" instance=ExtResource( 6 )]
 position = Vector2( 256, 80 )
 cell_position = Vector2( 16, 5 )
+
+[node name="TurnProcessor" type="Node" parent="."]
+script = ExtResource( 7 )
+map_path = NodePath("../MapContainer/Map")
 

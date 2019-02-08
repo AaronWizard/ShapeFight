@@ -2,6 +2,20 @@ extends TileMap
 
 class_name Map
 
+func _ready() -> void:
+	_set_actor_ais()
+
+	for a in get_actors():
+		var actor := a as Actor
+		var controller := actor.controller as ActorController
+		controller.get_action()
+
+func _set_actor_ais() -> void:
+	for a in get_actors():
+		var actor := a as Actor
+		if actor.controller == null:
+			actor.controller = RandomAI.new()
+
 func get_actors() -> Array:
 	return get_children()
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Resources/BasicTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Maps/Map.gd" type="Script" id=2]
 [ext_resource path="res://Actors/Types/Hero.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Actors/Types/Enemy.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Actors/Types/BigEnemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Actors/Controllers/Player.gd" type="Script" id=4]
+[ext_resource path="res://Actors/Types/Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Actors/Types/BigEnemy.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Node"]
 
@@ -22,31 +23,34 @@ script = ExtResource( 2 )
 position = Vector2( 0, 80 )
 cell_position = Vector2( 0, 5 )
 
-[node name="Enemy" parent="MapContainer/Map" instance=ExtResource( 4 )]
+[node name="Player" type="Node" parent="MapContainer/Map/Hero"]
+script = ExtResource( 4 )
+
+[node name="Enemy" parent="MapContainer/Map" instance=ExtResource( 5 )]
 position = Vector2( 64, 48 )
 cell_position = Vector2( 4, 3 )
 
-[node name="Enemy2" parent="MapContainer/Map" instance=ExtResource( 4 )]
+[node name="Enemy2" parent="MapContainer/Map" instance=ExtResource( 5 )]
 position = Vector2( 64, 128 )
 cell_position = Vector2( 4, 8 )
 
-[node name="Enemy3" parent="MapContainer/Map" instance=ExtResource( 4 )]
+[node name="Enemy3" parent="MapContainer/Map" instance=ExtResource( 5 )]
 position = Vector2( 128, 32 )
 cell_position = Vector2( 8, 2 )
 
-[node name="Enemy4" parent="MapContainer/Map" instance=ExtResource( 4 )]
+[node name="Enemy4" parent="MapContainer/Map" instance=ExtResource( 5 )]
 position = Vector2( 128, 144 )
 cell_position = Vector2( 8, 9 )
 
-[node name="Enemy5" parent="MapContainer/Map" instance=ExtResource( 4 )]
+[node name="Enemy5" parent="MapContainer/Map" instance=ExtResource( 5 )]
 position = Vector2( 192, 144 )
 cell_position = Vector2( 12, 9 )
 
-[node name="Enemy6" parent="MapContainer/Map" instance=ExtResource( 4 )]
+[node name="Enemy6" parent="MapContainer/Map" instance=ExtResource( 5 )]
 position = Vector2( 192, 32 )
 cell_position = Vector2( 12, 2 )
 
-[node name="BigEnemy" parent="MapContainer/Map" instance=ExtResource( 5 )]
+[node name="BigEnemy" parent="MapContainer/Map" instance=ExtResource( 6 )]
 position = Vector2( 256, 80 )
 cell_position = Vector2( 16, 5 )
 

@@ -14,10 +14,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actors/Actor.gd"
 }, {
+"base": "Node",
+"class": "ActorController",
+"language": "GDScript",
+"path": "res://Actors/Controllers/ActorController.gd"
+}, {
 "base": "TileMap",
 "class": "Map",
 "language": "GDScript",
 "path": "res://Maps/Map.gd"
+}, {
+"base": "Node",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Actors/Controllers/Player.gd"
+}, {
+"base": "Node",
+"class": "RandomAI",
+"language": "GDScript",
+"path": "res://Actors/Controllers/RandomAI.gd"
 }, {
 "base": "Node2D",
 "class": "TileObject",
@@ -26,7 +41,10 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Actor": "",
+"ActorController": "",
 "Map": "",
+"Player": "",
+"RandomAI": "",
 "TileObject": ""
 }
 

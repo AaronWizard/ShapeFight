@@ -10,13 +10,13 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
-		_process_key_input(event)
+		_process_key_input(event as InputEventKey)
 
 func _process_key_input(event: InputEventKey) -> void:
 	if event.pressed:
 		emit_signal("_input_processed")
 
-func get_action() -> void:
+func get_action() -> ActorAction:
 	print("press key to continue")
 
 	set_process_unhandled_input(true)
@@ -24,3 +24,7 @@ func get_action() -> void:
 	set_process_unhandled_input(false)
 
 	print(get_actor().name, ": Player")
+
+	var action := ActorAction.new()
+	action.actor = get_actor()
+	return action

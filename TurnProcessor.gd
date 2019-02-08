@@ -22,7 +22,9 @@ func _run() -> void:
 	while true:
 		var actor = _get_next_actor()
 		var controller := actor.controller as ActorController
-		yield(controller.get_action(), "completed")
+
+		var action: ActorAction = yield(controller.get_action(), "completed")
+		action.run()
 
 func _get_next_actor() -> Actor:
 	_actor_index = (_actor_index + 1) % _map.get_actors().size()

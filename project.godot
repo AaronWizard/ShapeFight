@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://Actors/Actor.gd"
 }, {
 "base": "Node",
+"class": "ActorAction",
+"language": "GDScript",
+"path": "res://Actors/Actions/ActorAction.gd"
+}, {
+"base": "Node",
 "class": "ActorController",
 "language": "GDScript",
 "path": "res://Actors/Controllers/ActorController.gd"
@@ -41,6 +46,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Actor": "",
+"ActorAction": "",
 "ActorController": "",
 "Map": "",
 "Player": "",

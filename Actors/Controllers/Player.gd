@@ -17,6 +17,8 @@ func _input(event: InputEvent) -> void:
 		_try_move(Direction.SOUTH)
 	elif Input.is_action_just_pressed("move_west"):
 		_try_move(Direction.WEST)
+	elif Input.is_action_just_pressed("wait"):
+		emit_signal("_input_processed", null)
 
 func _try_move(direction: int):
 	var new_cell : Vector2 = \

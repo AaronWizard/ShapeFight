@@ -14,13 +14,16 @@ func get_action() -> ActorAction:
 		if get_map().actor_can_enter_cell(get_actor(), new_cell):
 			valid_directions.append(did)
 
-	randomizer.randomize()
-	var direction_index := randomizer.randi_range(
-			0, valid_directions.size() - 1)
-	var direction_id = valid_directions[direction_index]
+	if not valid_directions.empty():
+		randomizer.randomize()
+		var direction_index := randomizer.randi_range(
+				0, valid_directions.size() - 1)
+		var direction_id = valid_directions[direction_index]
 
-	var action := MoveAction.new()
-	action.actor = get_actor()
-	action.direction = direction_id
+		var action := MoveAction.new()
+		action.actor = get_actor()
+		action.direction = direction_id
 
-	return action
+		return action
+	else:
+		return null

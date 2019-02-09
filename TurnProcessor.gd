@@ -24,10 +24,11 @@ func _run() -> void:
 		var controller := actor.controller as ActorController
 
 		var action: ActorAction = yield(controller.get_action(), "completed")
-		add_child(action)
-		yield(action.run(), "completed")
-		remove_child(action)
-		action.free()
+		if action:
+			add_child(action)
+			yield(action.run(), "completed")
+			remove_child(action)
+			action.free()
 
 func _get_next_actor() -> Actor:
 	_actor_index = (_actor_index + 1) % _map.get_actors().size()

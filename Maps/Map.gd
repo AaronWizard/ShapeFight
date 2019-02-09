@@ -2,6 +2,9 @@ extends TileMap
 
 class_name Map
 
+func is_valid_cell(cell: Vector2) -> bool:
+	return get_cellv(cell) != INVALID_CELL
+
 func get_actors() -> Array:
 	return get_children()
 
@@ -15,3 +18,15 @@ func get_actor_at_cell(cell: Vector2) -> Actor:
 			break
 
 	return result
+
+func actor_can_enter_cell(actor: Actor, cell: Vector2) -> bool:
+	var occupied_cells := actor.get_occupied_cell_at(cell)
+	for occ_cell in occupied_cells:
+		if not is_valid_cell(occ_cell):
+			return false
+		else:
+			var other_actor := get_actor_at_cell(occ_cell)
+			if (other_actor != null) and (other_actor != actor):
+				return false
+
+	return true

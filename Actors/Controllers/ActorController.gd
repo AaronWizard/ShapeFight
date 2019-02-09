@@ -5,6 +5,9 @@ class_name ActorController
 func get_actor() -> Actor:
 	return get_parent() as Actor
 
+func get_map() -> Map:
+	return get_actor().get_map()
+
 func _ready() -> void:
 	if get_actor():
 		get_actor().controller = self

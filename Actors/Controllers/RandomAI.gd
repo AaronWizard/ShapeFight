@@ -10,7 +10,6 @@ func get_action() -> ActorAction:
 	var valid_directions := []
 	for did in Direction.ALL_DIRECTIONS:
 		var direction : Vector2 = Direction.VECTORS[did]
-
 		var new_cell := get_actor().cell_position + direction
 		if get_map().actor_can_enter_cell(get_actor(), new_cell):
 			valid_directions.append(did)

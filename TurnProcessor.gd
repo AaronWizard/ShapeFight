@@ -1,6 +1,6 @@
 extends Node
 
-export(NodePath) var map_path
+export var map_path : NodePath
 var _map: Map
 
 var _actor_index : int

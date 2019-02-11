@@ -53,6 +53,16 @@ _global_script_classes=[ {
 "class": "TileObject",
 "language": "GDScript",
 "path": "res://Maps/TileObject.gd"
+}, {
+"base": "Node",
+"class": "TileProperties",
+"language": "GDScript",
+"path": "res://Maps/Tiles/TileProperties.gd"
+}, {
+"base": "Node",
+"class": "TilePropertiesSet",
+"language": "GDScript",
+"path": "res://Maps/Tiles/TilePropertiesSet.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
@@ -63,7 +73,9 @@ _global_script_class_icons={
 "MoveAction": "",
 "Player": "",
 "RandomAI": "",
-"TileObject": ""
+"TileObject": "",
+"TileProperties": "",
+"TilePropertiesSet": ""
 }
 
 [application]

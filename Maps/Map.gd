@@ -29,7 +29,7 @@ func actor_can_enter_cell(actor: Actor, cell: Vector2) -> bool:
 		if not is_valid_cell(occ_cell):
 			return false
 
-		var tile_name := tile_set.tile_get_name(get_cellv(cell))
+		var tile_name := tile_set.tile_get_name(get_cellv(occ_cell))
 		var tile_properties := tile_properties_set.get_properties(tile_name)
 		if tile_properties and tile_properties.blocks_move:
 			return false

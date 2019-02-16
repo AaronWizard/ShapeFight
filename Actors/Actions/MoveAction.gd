@@ -2,11 +2,14 @@ extends ActorAction
 
 class_name MoveAction
 
-const DURATION := 0.50
+const DURATION := 0.120
 const TRANSITION_TYPE := Tween.TRANS_EXPO
 const EASE_TYPE := Tween.EASE_OUT
 
 var direction : int
+
+func get_is_concurrent() -> bool:
+	return true
 
 func run() -> void:
 	var new_position : Vector2 = \
@@ -23,5 +26,6 @@ func run() -> void:
 			DURATION, TRANSITION_TYPE, EASE_TYPE)
 	$Tween.start()
 	yield($Tween, "tween_completed")
+	actor.cell_offset = Vector2()
 
 	emit_signal("finished")

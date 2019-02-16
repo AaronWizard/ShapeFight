@@ -2,16 +2,16 @@ extends Node
 
 signal _actions_finished
 
-export var map_path : NodePath
+export var map_path: NodePath
 var _map: Map
 
-var _actor_index : int
+var _actor_index: int
 
 func _ready() -> void:
 	_map = get_node(map_path) as Map
 	_set_actor_ais()
 
-	call_deferred("_run")
+	call_deferred('_run')
 
 func _set_actor_ais() -> void:
 	for a in _map.get_actors():
@@ -27,10 +27,10 @@ func _run() -> void:
 
 		if (get_child_count() > 0) and ((controller is Player) \
 				or _actor_has_action_running(actor)):
-			yield(self, "_actions_finished")
+			yield(self, '_actions_finished')
 
 		controller.call_deferred('get_action')
-		var action: ActorAction = yield(controller, "got_action")
+		var action: ActorAction = yield(controller, 'got_action')
 
 		if action:
 			add_child(action)
@@ -41,7 +41,7 @@ func _run() -> void:
 			else:
 				if get_child_count() > 0:
 					# Wait for other actions to finish
-					yield(self, "_actions_finished")
+					yield(self, '_actions_finished')
 
 				action.call_deferred('run')
 				yield(action, 'finished')
@@ -69,4 +69,4 @@ func _action_finished(action: ActorAction) -> void:
 	action.queue_free()
 
 	if get_child_count() == 0:
-		emit_signal("_actions_finished")
+		emit_signal('_actions_finished')

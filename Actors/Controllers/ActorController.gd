@@ -15,5 +15,5 @@ func _ready() -> void:
 		get_actor().controller = self
 
 func get_action() -> void:
-	print(name, ': Must implement get_action')
-	emit_signal("got_action", null)
+	print('ActorController: Must implement get_action')
+	emit_signal('got_action', null)

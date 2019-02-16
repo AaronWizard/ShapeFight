@@ -6,13 +6,13 @@ const DURATION := 0.120
 const TRANSITION_TYPE := Tween.TRANS_EXPO
 const EASE_TYPE := Tween.EASE_OUT
 
-var direction : int
+var direction: int
 
 func get_is_concurrent() -> bool:
 	return true
 
 func run() -> void:
-	var new_position : Vector2 = \
+	var new_position: Vector2 = \
 			actor.cell_position + Direction.VECTORS[direction]
 
 	var old_position := actor.cell_position
@@ -25,7 +25,7 @@ func run() -> void:
 			actor, 'cell_offset', offset, Vector2(),
 			DURATION, TRANSITION_TYPE, EASE_TYPE)
 	$Tween.start()
-	yield($Tween, "tween_completed")
+	yield($Tween, 'tween_completed')
 	actor.cell_offset = Vector2()
 
-	emit_signal("finished")
+	emit_signal('finished')

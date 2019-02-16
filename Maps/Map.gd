@@ -2,8 +2,8 @@ extends TileMap
 
 class_name Map
 
-export var tile_properties_scene : PackedScene
-onready var tile_properties_set : TilePropertiesSet \
+export var tile_properties_scene: PackedScene
+onready var tile_properties_set: TilePropertiesSet \
 		= tile_properties_scene.instance()
 
 func is_valid_cell(cell: Vector2) -> bool:
@@ -13,7 +13,7 @@ func get_actors() -> Array:
 	return get_children()
 
 func get_actor_at_cell(cell: Vector2) -> Actor:
-	var result : Actor = null
+	var result: Actor = null
 
 	for a in get_actors():
 		var actor := a as Actor

@@ -76,3 +76,37 @@ func get_occupied_cell_at(origin: Vector2 = Vector2()) -> Array:
 
 func get_occupied_cells() -> Array:
 	return get_occupied_cell_at(cell_position)
+
+func on_cell(cell: Vector2) -> bool:
+	return cell in get_occupied_cells()
+
+func adjacent_cells() -> Array:
+	var result := []
+
+	var cell: Vector2
+
+	for index in range(cell_diameter):
+		cell = Vector2(index, -1) # North edge
+		result.append(cell + cell_position)
+
+		cell = Vector2(cell_diameter, index) # East edge
+		result.append(cell + cell_position)
+
+		cell = Vector2(index, cell_diameter) # South edge
+		result.append(cell + cell_position)
+
+		cell = Vector2(-1, index) # West edge
+		result.append(cell + cell_position)
+
+	return result
+
+func is_adjacent(other: TileObject) -> bool:
+	var result := false
+
+	for c in adjacent_cells():
+		var cell := c as Vector2
+		if other.on_cell(cell):
+			result = true
+			break
+
+	return result

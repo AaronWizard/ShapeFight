@@ -17,7 +17,7 @@ func get_actor_at_cell(cell: Vector2) -> Actor:
 
 	for a in get_actors():
 		var actor := a as Actor
-		if cell in actor.get_occupied_cells():
+		if actor.on_cell(cell):
 			result = actor
 			break
 

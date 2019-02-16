@@ -3,6 +3,8 @@ extends TileObject
 
 class_name Actor
 
+onready var stats = $Stats as Stats
+
 var controller = null setget set_controller # ActorController
 
 func get_map(): # -> Map

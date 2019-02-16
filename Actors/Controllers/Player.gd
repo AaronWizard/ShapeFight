@@ -3,6 +3,7 @@ extends ActorController
 class_name Player
 
 const MoveActionScene := preload('res://Actors/Actions/MoveAction.tscn')
+const AttackActionScene := preload('res://Actors/Actions/AttackAction.tscn')
 
 signal _input_processed(action)
 
@@ -22,13 +23,23 @@ func _input(event: InputEvent) -> void:
 	elif Input.is_action_just_pressed('wait'):
 		emit_signal('_input_processed', null)
 
-func _try_move(direction: int):
+func _try_move(direction: int) -> void:
 	var new_cell: Vector2 = \
 			get_actor().cell_position + Direction.VECTORS[direction]
 	if get_map().actor_can_enter_cell(get_actor(), new_cell):
 		var action := MoveActionScene.instance() as MoveAction
 		action.actor = get_actor()
 		action.direction = direction
+		emit_signal('_input_processed', action)
+	else:
+		_try_attack(new_cell)
+
+func _try_attack(cell: Vector2) -> void:
+	var other_actor := get_map().get_actor_at_cell(cell)
+	if (other_actor != null) and (other_actor != get_actor()):
+		var action := AttackActionScene.instance() as AttackAction
+		action.actor = get_actor()
+		action.target = other_actor
 		emit_signal('_input_processed', action)
 
 func get_action() -> void:

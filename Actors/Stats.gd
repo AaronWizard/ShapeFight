@@ -10,5 +10,5 @@ var is_alive: bool setget , get_is_alive
 func get_is_alive() -> bool:
 	return stamina > 0
 
-static func do_attack(attacker: Stats, target: Stats) -> void:
-	target.stamina -= attacker.attack
+func do_attack(target: Stats) -> void:
+	target.stamina -= attack

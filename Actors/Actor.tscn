@@ -6,10 +6,6 @@
 
 [node name="Actor" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-cell_size = Vector2( 16, 16 )
-cell_position = Vector2( 0, 0 )
-cell_diameter = 1
-cell_offset = Vector2( 0, 0 )
 
 [node name="Stats" type="Node" parent="." index="0"]
 script = ExtResource( 3 )

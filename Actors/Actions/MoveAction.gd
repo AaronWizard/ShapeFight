@@ -15,6 +15,8 @@ func run() -> void:
 	var new_position: Vector2 = \
 			actor.cell_position + Direction.VECTORS[direction]
 
+	assert(get_map().actor_can_enter_cell(actor, new_position))
+
 	var old_position := actor.cell_position
 	actor.cell_position = new_position
 

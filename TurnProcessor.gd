@@ -35,6 +35,7 @@ func _run() -> void:
 		if action:
 			if action.concurrent:
 				add_child(action)
+				#warning-ignore:return_value_discarded
 				action.connect('finished', self, '_action_finished', [action])
 
 				action.call_deferred('run')

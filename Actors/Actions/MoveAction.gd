@@ -6,6 +6,8 @@ const DURATION := 0.120
 const TRANSITION_TYPE := Tween.TRANS_EXPO
 const EASE_TYPE := Tween.EASE_OUT
 
+onready var tween := $Tween as Tween
+
 var direction: int
 
 func get_is_concurrent() -> bool:
@@ -23,11 +25,13 @@ func run() -> void:
 	var offset = old_position - new_position
 	actor.cell_offset = offset
 
-	$Tween.interpolate_property( \
+	#warning-ignore:return_value_discarded
+	tween.interpolate_property( \
 			actor, 'cell_offset', offset, Vector2(),
 			DURATION, TRANSITION_TYPE, EASE_TYPE)
-	$Tween.start()
-	yield($Tween, 'tween_completed')
+	#warning-ignore:return_value_discarded
+	tween.start()
+	yield(tween, 'tween_completed')
 	actor.cell_offset = Vector2()
 
 	emit_signal('finished')

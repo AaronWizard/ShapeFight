@@ -6,6 +6,7 @@ signal finished
 
 var actor: Actor
 
+#warning-ignore:unused_class_variable
 var concurrent: bool setget , get_is_concurrent
 
 func get_map() -> Map:

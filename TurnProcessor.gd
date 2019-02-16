@@ -33,15 +33,17 @@ func _run() -> void:
 		var action: ActorAction = yield(controller, 'got_action')
 
 		if action:
-			add_child(action)
-
 			if action.concurrent:
+				add_child(action)
 				action.connect('finished', self, '_action_finished', [action])
+
 				action.call_deferred('run')
 			else:
 				if get_child_count() > 0:
 					# Wait for other actions to finish
 					yield(self, '_actions_finished')
+
+				add_child(action)
 
 				action.call_deferred('run')
 				yield(action, 'finished')

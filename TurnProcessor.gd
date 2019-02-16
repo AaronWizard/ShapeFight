@@ -23,12 +23,17 @@ func _run() -> void:
 		var actor = _get_next_actor()
 		var controller := actor.controller as ActorController
 
-		var action: ActorAction = yield(controller.get_action(), "completed")
+		controller.call_deferred('get_action')
+		var action: ActorAction = yield(controller, "got_action")
+
 		if action:
 			add_child(action)
-			yield(action.run(), "completed")
+
+			action.call_deferred('run')
+			yield(action, 'finished')
+
 			remove_child(action)
-			action.free()
+			action.queue_free()
 
 func _get_next_actor() -> Actor:
 	_actor_index = (_actor_index + 1) % _map.get_actors().size()

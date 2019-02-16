@@ -4,8 +4,8 @@ class_name RandomAI
 
 onready var randomizer := RandomNumberGenerator.new()
 
-func get_action() -> ActorAction:
-	yield(get_tree(), "idle_frame")
+func get_action() -> void:
+	var result: ActorAction = null
 
 	var valid_directions := []
 	for did in Direction.ALL_DIRECTIONS:
@@ -24,6 +24,6 @@ func get_action() -> ActorAction:
 		action.actor = get_actor()
 		action.direction = direction_id
 
-		return action
-	else:
-		return null
+		result = action
+
+	emit_signal("got_action", result)

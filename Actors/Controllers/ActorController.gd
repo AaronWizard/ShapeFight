@@ -2,6 +2,8 @@ extends Node
 
 class_name ActorController
 
+signal got_action(action)
+
 func get_actor() -> Actor:
 	return get_parent() as Actor
 
@@ -12,7 +14,6 @@ func _ready() -> void:
 	if get_actor():
 		get_actor().controller = self
 
-func get_action() -> ActorAction:
-	yield(get_tree(), "idle_frame") # Is an asynchronous method
+func get_action() -> void:
 	print(name, ': Must implement get_action')
-	return null
+	emit_signal("got_action", null)

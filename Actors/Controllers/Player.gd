@@ -29,9 +29,9 @@ func _try_move(direction: int):
 		action.direction = direction
 		emit_signal("_input_processed", action)
 
-func get_action() -> ActorAction:
+func get_action() -> void:
 	set_process_unhandled_input(true)
 	var action : ActorAction = yield(self, "_input_processed")
 	set_process_unhandled_input(false)
 
-	return action
+	emit_signal("got_action", action)

@@ -2,6 +2,8 @@ extends ActorController
 
 class_name RandomAI
 
+const MoveActionScene := preload("res://Actors/Actions/MoveAction.tscn")
+
 onready var randomizer := RandomNumberGenerator.new()
 
 func get_action() -> void:
@@ -20,7 +22,7 @@ func get_action() -> void:
 				0, valid_directions.size() - 1)
 		var direction_id = valid_directions[direction_index]
 
-		var action := MoveAction.new()
+		var action := MoveActionScene.instance() as MoveAction
 		action.actor = get_actor()
 		action.direction = direction_id
 

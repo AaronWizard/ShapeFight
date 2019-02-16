@@ -2,6 +2,8 @@ extends ActorController
 
 class_name Player
 
+const MoveActionScene := preload("res://Actors/Actions/MoveAction.tscn")
+
 signal _input_processed(action)
 
 func _ready() -> void:
@@ -24,7 +26,7 @@ func _try_move(direction: int):
 	var new_cell : Vector2 = \
 			get_actor().cell_position + Direction.VECTORS[direction]
 	if get_map().actor_can_enter_cell(get_actor(), new_cell):
-		var action = MoveAction.new()
+		var action := MoveActionScene.instance() as MoveAction
 		action.actor = get_actor()
 		action.direction = direction
 		emit_signal("_input_processed", action)

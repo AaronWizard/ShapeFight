@@ -5,6 +5,9 @@
 
 [node name="Enemy" index="0" instance=ExtResource( 1 )]
 
+[node name="Stats" parent="." index="0"]
+stamina = 2
+
 [node name="Sprite" parent="Centre/Offset" index="0"]
 texture = ExtResource( 2 )
 

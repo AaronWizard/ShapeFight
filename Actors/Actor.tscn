@@ -1,10 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Maps/TileObject.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Actor.gd" type="Script" id=2]
+[ext_resource path="res://Actors/Stats.gd" type="Script" id=3]
 
 [node name="Actor" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_position = Vector2( 0, 0 )
+cell_diameter = 1
+cell_offset = Vector2( 0, 0 )
+
+[node name="Stats" type="Node" parent="." index="0"]
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Centre/Offset" index="0"]
 

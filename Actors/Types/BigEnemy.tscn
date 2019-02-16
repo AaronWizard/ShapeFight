@@ -6,7 +6,10 @@
 [node name="BigEnemy" index="0" instance=ExtResource( 1 )]
 cell_diameter = 2
 
-[node name="Centre" parent="." index="0"]
+[node name="Stats" parent="." index="0"]
+stamina = 4
+
+[node name="Centre" parent="." index="1"]
 position = Vector2( 16, 16 )
 
 [node name="Sprite" parent="Centre/Offset" index="0"]

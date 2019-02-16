@@ -9,13 +9,13 @@ func _ready() -> void:
 	set_process_unhandled_input(false)
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("move_north"):
+	if Input.is_action_pressed("move_north"):
 		_try_move(Direction.NORTH)
-	elif Input.is_action_just_pressed("move_east"):
+	elif Input.is_action_pressed("move_east"):
 		_try_move(Direction.EAST)
-	elif Input.is_action_just_pressed("move_south"):
+	elif Input.is_action_pressed("move_south"):
 		_try_move(Direction.SOUTH)
-	elif Input.is_action_just_pressed("move_west"):
+	elif Input.is_action_pressed("move_west"):
 		_try_move(Direction.WEST)
 	elif Input.is_action_just_pressed("wait"):
 		emit_signal("_input_processed", null)

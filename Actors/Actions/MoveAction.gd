@@ -2,7 +2,7 @@ extends ActorAction
 
 class_name MoveAction
 
-const DURATION := 0.120
+const DURATION := 0.10
 const TRANSITION_TYPE := Tween.TRANS_EXPO
 const EASE_TYPE := Tween.EASE_OUT
 

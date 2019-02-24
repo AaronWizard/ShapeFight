@@ -73,6 +73,11 @@ _global_script_classes=[ {
 "class": "TilePropertiesSet",
 "language": "GDScript",
 "path": "res://Maps/Tiles/TilePropertiesSet.gd"
+}, {
+"base": "Node",
+"class": "TurnProcessor",
+"language": "GDScript",
+"path": "res://TurnProcessor.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
@@ -87,7 +92,8 @@ _global_script_class_icons={
 "Stats": "",
 "TileObject": "",
 "TileProperties": "",
-"TilePropertiesSet": ""
+"TilePropertiesSet": "",
+"TurnProcessor": ""
 }
 
 [application]

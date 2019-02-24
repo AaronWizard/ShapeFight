@@ -7,6 +7,7 @@ signal _all_tweens_completed
 const STRIKE_TIME := 0.08
 const STRIKE_TRANS_TYPE := Tween.TRANS_BACK
 const STRIKE_EASE_TYPE := Tween.EASE_IN
+const STRIKE_OFFSET := 0.75
 
 const STRIKE_RECOIL_TIME := 0.06
 const STRIKE_RECOIL_TRANS_TYPE := Tween.TRANS_BACK
@@ -15,6 +16,7 @@ const STRIKE_RECOIL_EASE_TYPE := Tween.EASE_OUT
 const BUMP_TIME := 0.06
 const BUMP_TRANS_TYPE := Tween.TRANS_BACK
 const BUMP_EASE_TYPE := Tween.EASE_OUT
+const BUMP_OFFSET := 0.25
 
 const BUMP_BACK_TIME := 0.08
 const BUMP_BACK_TRANS_TYPE := Tween.TRANS_ELASTIC
@@ -30,11 +32,12 @@ func run() -> void:
 	assert(target.is_adjacent(actor))
 
 	var dir := target.cell_position
+	# Centre of actor
 	dir += Vector2(1, 1) * ((target.cell_diameter / 2.0) - 0.5)
 	dir -= actor.cell_position
 
-	var strike_offset := dir * 0.75
-	var bump_offset = dir.normalized() * 0.25
+	var strike_offset := dir * STRIKE_OFFSET
+	var bump_offset = dir.normalized() * BUMP_OFFSET
 
 	#warning-ignore:return_value_discarded
 	tween.interpolate_property( \
@@ -44,7 +47,7 @@ func run() -> void:
 	tween.start()
 	yield(tween, 'tween_completed')
 
-	#actor.stats.do_attack(target.stats)
+	actor.stats.do_attack(target.stats)
 
 	# Queuing multiple tweens
 	_running_tween_count = 0
@@ -75,7 +78,11 @@ func run() -> void:
 	yield(self, '_all_tweens_completed')
 
 	actor.cell_offset = Vector2()
-	target.cell_offset = Vector2()
+
+	if target.stats.is_alive:
+		target.cell_offset = Vector2()
+	else:
+		target.die()
 
 	emit_signal('finished')
 

@@ -12,3 +12,4 @@ script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Centre/Offset" index="0"]
 
+[connection signal="took_damage" from="Stats" to="." method="_on_Stats_took_damage"]

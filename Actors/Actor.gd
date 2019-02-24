@@ -3,6 +3,10 @@ extends TileObject
 
 class_name Actor
 
+signal took_damage(damage)
+signal died
+
+#warning-ignore:unused_class_variable
 onready var stats = $Stats as Stats
 
 var controller = null setget set_controller # ActorController
@@ -23,3 +27,9 @@ func set_controller(value) -> void: # : ActorController
 		add_child(value)
 
 	controller = value
+
+func _on_Stats_took_damage(damage) -> void:
+	emit_signal('took_damage', damage)
+
+func die() -> void:
+	emit_signal('died')

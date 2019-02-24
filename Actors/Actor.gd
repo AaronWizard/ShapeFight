@@ -6,6 +6,9 @@ class_name Actor
 signal took_damage(damage)
 signal died
 
+enum Faction { PLAYER, ENEMY }
+export(Faction) var faction := Faction.ENEMY
+
 #warning-ignore:unused_class_variable
 onready var stats = $Stats as Stats
 

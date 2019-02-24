@@ -4,6 +4,7 @@
 [ext_resource path="res://Assets/Graphics/Actors/hero.png" type="Texture" id=2]
 
 [node name="Hero" index="0" instance=ExtResource( 1 )]
+faction = 0
 
 [node name="Stats" parent="." index="0"]
 stamina = 20

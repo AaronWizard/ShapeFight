@@ -14,3 +14,18 @@ const VECTORS := {
 	SOUTH: VECTOR_SOUTH,
 	WEST: VECTOR_WEST,
 }
+
+static func get_closest_direction(start: Vector2, end: Vector2) -> int:
+	var diff := end - start
+
+	var result := NORTH
+	var dotprod: float = VECTORS[result].dot(diff)
+
+	for did in ALL_DIRECTIONS:
+		var direction := VECTORS[did] as Vector2
+		var dp := direction.dot(diff)
+		if dp > dotprod:
+			result = did
+			dotprod = dp
+
+	return result

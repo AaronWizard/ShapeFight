@@ -16,6 +16,10 @@ func run(map: Map) -> void:
 
 	while running:
 		var actor = _get_next_actor()
+
+		if not actor.controller:
+			continue
+
 		var controller := actor.controller as ActorController
 
 		if (get_child_count() > 0) and ((controller is Player) \

@@ -22,10 +22,9 @@ const BUMP_BACK_TIME := 0.08
 const BUMP_BACK_TRANS_TYPE := Tween.TRANS_ELASTIC
 const BUMP_BACK_EASE_TYPE := Tween.EASE_OUT
 
-onready var tween := $Tween as Tween
-
 var target: Actor
 
+onready var _tween := $Tween as Tween
 var _running_tween_count: int
 
 func run() -> void:
@@ -40,12 +39,12 @@ func run() -> void:
 	var bump_offset = dir.normalized() * BUMP_OFFSET
 
 	#warning-ignore:return_value_discarded
-	tween.interpolate_property( \
+	_tween.interpolate_property( \
 			actor, 'cell_offset', Vector2(), strike_offset, \
 			STRIKE_TIME, STRIKE_TRANS_TYPE, STRIKE_EASE_TYPE)
 	#warning-ignore:return_value_discarded
-	tween.start()
-	yield(tween, 'tween_completed')
+	_tween.start()
+	yield(_tween, 'tween_completed')
 
 	actor.stats.do_attack(target.stats)
 
@@ -53,28 +52,28 @@ func run() -> void:
 	_running_tween_count = 0
 
 	#warning-ignore:return_value_discarded
-	tween.interpolate_property( \
+	_tween.interpolate_property( \
 			actor, 'cell_offset', strike_offset, Vector2(), \
 			STRIKE_RECOIL_TIME, STRIKE_RECOIL_TRANS_TYPE, \
 			STRIKE_RECOIL_EASE_TYPE)
 	_running_tween_count += 1
 
 	#warning-ignore:return_value_discarded
-	tween.interpolate_property( \
+	_tween.interpolate_property( \
 			target, 'cell_offset', Vector2(), bump_offset, \
 			BUMP_TIME, BUMP_TRANS_TYPE, BUMP_EASE_TYPE)
 	_running_tween_count += 1
 
 	if target.stats.is_alive:
 		#warning-ignore:return_value_discarded
-		tween.interpolate_property( \
+		_tween.interpolate_property( \
 				target, 'cell_offset', bump_offset, Vector2(), \
 				BUMP_BACK_TIME, BUMP_BACK_TRANS_TYPE, BUMP_BACK_EASE_TYPE, \
 				BUMP_TIME)
 		_running_tween_count += 1
 
 	#warning-ignore:return_value_discarded
-	tween.start()
+	_tween.start()
 	yield(self, '_all_tweens_completed')
 
 	actor.cell_offset = Vector2()

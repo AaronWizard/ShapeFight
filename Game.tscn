@@ -1,14 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Resources/BasicTileSet.tres" type="TileSet" id=2]
 [ext_resource path="res://Maps/Map.gd" type="Script" id=3]
 [ext_resource path="res://Maps/Tiles/BasicTileSetData.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Actors/Types/Hero.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Actors/Controllers/Player.gd" type="Script" id=6]
-[ext_resource path="res://Actors/Types/Enemy.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Actors/Types/BigEnemy.tscn" type="PackedScene" id=8]
-[ext_resource path="res://TurnProcessor.gd" type="Script" id=9]
+[ext_resource path="res://Actors/Types/Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Actors/Types/BigEnemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://TurnProcessor.gd" type="Script" id=8]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -25,41 +24,67 @@ script = ExtResource( 3 )
 tile_properties_scene = ExtResource( 4 )
 
 [node name="Hero" parent="MapContainer/Map" instance=ExtResource( 5 )]
-editor/display_folded = true
 position = Vector2( 0, 80 )
+cell_size = Vector2( 16, 16 )
 cell_position = Vector2( 0, 5 )
+cell_diameter = 1
+cell_offset = Vector2( 0, 0 )
 
-[node name="Player" type="Node" parent="MapContainer/Map/Hero"]
-script = ExtResource( 6 )
-
-[node name="Enemy" parent="MapContainer/Map" instance=ExtResource( 7 )]
+[node name="Enemy" parent="MapContainer/Map" instance=ExtResource( 6 )]
 position = Vector2( 64, 48 )
+cell_size = Vector2( 16, 16 )
 cell_position = Vector2( 4, 3 )
+cell_diameter = 1
+cell_offset = Vector2( 0, 0 )
+faction = 1
 
-[node name="Enemy2" parent="MapContainer/Map" instance=ExtResource( 7 )]
+[node name="Enemy2" parent="MapContainer/Map" instance=ExtResource( 6 )]
 position = Vector2( 64, 128 )
+cell_size = Vector2( 16, 16 )
 cell_position = Vector2( 4, 8 )
+cell_diameter = 1
+cell_offset = Vector2( 0, 0 )
+faction = 1
 
-[node name="Enemy3" parent="MapContainer/Map" instance=ExtResource( 7 )]
+[node name="Enemy3" parent="MapContainer/Map" instance=ExtResource( 6 )]
 position = Vector2( 128, 32 )
+cell_size = Vector2( 16, 16 )
 cell_position = Vector2( 8, 2 )
+cell_diameter = 1
+cell_offset = Vector2( 0, 0 )
+faction = 1
 
-[node name="Enemy4" parent="MapContainer/Map" instance=ExtResource( 7 )]
+[node name="Enemy4" parent="MapContainer/Map" instance=ExtResource( 6 )]
 position = Vector2( 128, 144 )
+cell_size = Vector2( 16, 16 )
 cell_position = Vector2( 8, 9 )
+cell_diameter = 1
+cell_offset = Vector2( 0, 0 )
+faction = 1
 
-[node name="Enemy5" parent="MapContainer/Map" instance=ExtResource( 7 )]
+[node name="Enemy5" parent="MapContainer/Map" instance=ExtResource( 6 )]
 position = Vector2( 192, 144 )
+cell_size = Vector2( 16, 16 )
 cell_position = Vector2( 12, 9 )
+cell_diameter = 1
+cell_offset = Vector2( 0, 0 )
+faction = 1
 
-[node name="Enemy6" parent="MapContainer/Map" instance=ExtResource( 7 )]
+[node name="Enemy6" parent="MapContainer/Map" instance=ExtResource( 6 )]
 position = Vector2( 192, 32 )
+cell_size = Vector2( 16, 16 )
 cell_position = Vector2( 12, 2 )
+cell_diameter = 1
+cell_offset = Vector2( 0, 0 )
+faction = 1
 
-[node name="BigEnemy" parent="MapContainer/Map" instance=ExtResource( 8 )]
+[node name="BigEnemy" parent="MapContainer/Map" instance=ExtResource( 7 )]
 position = Vector2( 256, 80 )
+cell_size = Vector2( 16, 16 )
 cell_position = Vector2( 16, 5 )
+cell_offset = Vector2( 0, 0 )
+faction = 1
 
 [node name="TurnProcessor" type="Node" parent="."]
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 

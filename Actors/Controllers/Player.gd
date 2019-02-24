@@ -26,7 +26,7 @@ func _input(_event: InputEvent) -> void:
 func _try_move(direction: int) -> void:
 	var new_cell: Vector2 = \
 			get_actor().cell_position + Direction.VECTORS[direction]
-	if get_map().actor_can_enter_cell(get_actor(), new_cell):
+	if get_map().actor_can_enter_cell(get_actor(), new_cell, false):
 		var action := MoveActionScene.instance() as MoveAction
 		action.actor = get_actor()
 		action.direction = direction

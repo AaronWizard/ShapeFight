@@ -6,15 +6,8 @@ onready var turn_processor := $TurnProcessor as TurnProcessor
 onready var hero := $MapContainer/Map/Hero as Actor
 
 func _ready() -> void:
-	_set_actor_ais()
 	_set_actor_events()
 	turn_processor.run(map)
-
-func _set_actor_ais() -> void:
-	for a in map.get_actors():
-		var actor := a as Actor
-		if actor.controller == null:
-			actor.controller = RandomAI.new()
 
 func _set_actor_events() -> void:
 	for a in map.get_actors():

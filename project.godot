@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "AI",
+"language": "GDScript",
+"path": "res://Actors/Controllers/AI.gd"
+}, {
 "base": "Node2D",
 "class": "Actor",
 "language": "GDScript",
@@ -44,15 +49,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actors/Actions/MoveAction.gd"
 }, {
+"base": "Reference",
+"class": "Pathfinder",
+"language": "GDScript",
+"path": "res://Maps/Pathfinder.gd"
+}, {
 "base": "Node",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Actors/Controllers/Player.gd"
-}, {
-"base": "Node",
-"class": "RandomAI",
-"language": "GDScript",
-"path": "res://Actors/Controllers/RandomAI.gd"
 }, {
 "base": "Node",
 "class": "Stats",
@@ -80,6 +85,7 @@ _global_script_classes=[ {
 "path": "res://TurnProcessor.gd"
 } ]
 _global_script_class_icons={
+"AI": "",
 "Actor": "",
 "ActorAction": "",
 "ActorController": "",
@@ -87,8 +93,8 @@ _global_script_class_icons={
 "Direction": "",
 "Map": "",
 "MoveAction": "",
+"Pathfinder": "",
 "Player": "",
-"RandomAI": "",
 "Stats": "",
 "TileObject": "",
 "TileProperties": "",

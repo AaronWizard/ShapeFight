@@ -48,9 +48,6 @@ func _get_move_action(target: Actor) -> MoveAction:
 	var result: MoveAction = null
 
 	var path := _get_path(target)
-	if path.size() > 0:
-		assert(path[0] == get_actor().cell_position)
-		assert(path[ path.size() - 1 ] == target.cell_position)
 
 	if path.size() > 0:
 		while target.on_cell(path[ path.size() - 1 ]):
@@ -72,4 +69,15 @@ func _get_move_action(target: Actor) -> MoveAction:
 
 func _get_path(target: Actor) -> Array:
 	_pathfinder.rebuild()
-	return _pathfinder.get_path(get_actor().cell_position, target.cell_position)
+
+	var result := []
+	var have_result := false
+
+	for c in target.adjacent_cells():
+		if _pathfinder.has_cell(c):
+			var path := _pathfinder.get_path(get_actor().cell_position, c)
+			if not have_result or path.size() < result.size():
+				result = path
+				have_result = true
+
+	return result

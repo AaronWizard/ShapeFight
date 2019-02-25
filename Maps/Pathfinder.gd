@@ -11,6 +11,10 @@ func rebuild() -> void:
 	_add_traversable_cells()
 	_connect_traversable_cells()
 
+func has_cell(cell: Vector2) -> bool:
+	var id := _id_from_cell(cell.x, cell.y)
+	return _astar.has_point(id)
+
 func get_path(start: Vector2, end: Vector2) -> Array:
 	var result := []
 
@@ -34,7 +38,7 @@ func _add_traversable_cells():
 	for x in range(rect.position.x, rect.end.x):
 		for y in range(rect.position.y, rect.end.y):
 			var cell := Vector2(x, y)
-			if map.actor_can_enter_cell(actor, cell, true):
+			if map.actor_can_enter_cell(actor, cell, false):
 				var id := _id_from_cell(x, y)
 				_astar.add_point(id, Vector3(x, y, 0))
 

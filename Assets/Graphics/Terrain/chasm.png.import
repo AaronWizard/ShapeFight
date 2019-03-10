@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/chasm.png-125cc8c322e187be14ed80edc583608e.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

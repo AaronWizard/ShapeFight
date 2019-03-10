@@ -9,12 +9,12 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "ActorController",
 "class": "AI",
 "language": "GDScript",
 "path": "res://Actors/Controllers/AI.gd"
 }, {
-"base": "Node2D",
+"base": "TileObject",
 "class": "Actor",
 "language": "GDScript",
 "path": "res://Actors/Actor.gd"
@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actors/Controllers/ActorController.gd"
 }, {
-"base": "Node",
+"base": "ActorAction",
 "class": "AttackAction",
 "language": "GDScript",
 "path": "res://Actors/Actions/AttackAction.gd"
@@ -44,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Maps/Map.gd"
 }, {
-"base": "Node",
+"base": "ActorAction",
 "class": "MoveAction",
 "language": "GDScript",
 "path": "res://Actors/Actions/MoveAction.gd"
@@ -54,7 +54,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Maps/Pathfinder.gd"
 }, {
-"base": "Node",
+"base": "ActorController",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Actors/Controllers/Player.gd"

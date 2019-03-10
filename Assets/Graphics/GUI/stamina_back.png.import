@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/stamina_back.png-a6482da3541e7afe1f8b6e8eafbce31b.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

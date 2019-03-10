@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/stamina_overlay.png-f68cc38f56f50253f77804a09ad66e00.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

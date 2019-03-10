@@ -12,6 +12,8 @@ func rebuild() -> void:
 	_connect_traversable_cells()
 
 func has_cell(cell: Vector2) -> bool:
+	#warning-ignore:narrowing_conversion
+	#warning-ignore:narrowing_conversion
 	var id := _id_from_cell(cell.x, cell.y)
 	return _astar.has_point(id)
 

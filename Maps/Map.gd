@@ -25,7 +25,7 @@ func get_actor_at_cell(cell: Vector2) -> Actor:
 
 func actor_can_enter_cell(actor: Actor, cell: Vector2, ignore_actors: bool) \
 		-> bool:
-	var occupied_cells := actor.get_occupied_cell_at(cell)
+	var occupied_cells := actor.get_occupied_cells_at(cell)
 	for occ_cell in occupied_cells:
 		if not is_valid_cell(occ_cell):
 			return false

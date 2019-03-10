@@ -110,3 +110,34 @@ func is_adjacent(other: TileObject) -> bool:
 			break
 
 	return result
+
+func get_cell_rect() -> Rect2:
+	return Rect2(cell_position, Vector2(cell_diameter, cell_diameter))
+
+func adjacent_cell_positions(cell_rect: Rect2) -> Array:
+	var result := []
+
+	var min_pos := cell_rect.position - Vector2(cell_diameter, cell_diameter)
+	var max_pos := cell_rect.end + Vector2(1, 1)
+
+	var cell: Vector2
+
+	for x in range(min_pos.x + 1, max_pos.x - 1):
+		# North side
+		cell = Vector2(x, cell_rect.position.y - cell_diameter)
+		result.append(cell)
+
+		# South side
+		cell = Vector2(x, cell_rect.position.y + cell_rect.size.y)
+		result.append(cell)
+
+	for y in range(min_pos.y + 1, max_pos.y - 1):
+		# East side
+		cell = Vector2(cell_rect.position.x + cell_rect.size.x, y)
+		result.append(cell)
+
+		# West side
+		cell = Vector2(cell_rect.position.x - cell_diameter, y)
+		result.append(cell)
+
+	return result

@@ -71,13 +71,32 @@ func _get_path(target: Actor) -> Array:
 	_pathfinder.rebuild()
 
 	var result := []
-	var have_result := false
 
-	for c in target.adjacent_cells():
-		if _pathfinder.has_cell(c):
+	var ends := _get_path_ends(target)
+	if ends.size() > 0:
+		for c in ends:
 			var path := _pathfinder.get_path(get_actor().cell_position, c)
-			if not have_result or path.size() < result.size():
+			if not path.empty():
 				result = path
-				have_result = true
+				break
 
 	return result
+
+func _get_path_ends(target: Actor) -> Array:
+	var result := []
+
+	var target_rect := target.get_cell_rect()
+	var adjacent_positions := get_actor().adjacent_cell_positions(target_rect)
+
+	for a in adjacent_positions:
+		var cell := a as Vector2
+		if _pathfinder.has_cell(cell):
+			result.append(cell)
+
+	result.sort_custom(self, '_sort_end_positions')
+	return result
+
+func _sort_end_positions(a: Vector2, b: Vector2) -> bool:
+	var a_dist := get_actor().cell_position.distance_squared_to(a)
+	var b_dist := get_actor().cell_position.distance_squared_to(b)
+	return a_dist < b_dist

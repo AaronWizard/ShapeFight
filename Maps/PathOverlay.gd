@@ -26,6 +26,8 @@ func set_current_actor(value: Actor) -> void:
 
 		var mouse := get_viewport().get_mouse_position()
 		var cell := world_to_map(mouse)
+
+		_current_cell = cell * -1 # Force path draw
 		_start_draw_path(cell)
 	else:
 		_pathfinder.clear()

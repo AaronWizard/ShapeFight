@@ -9,7 +9,8 @@ enum TileIDs {
 
 onready var _pathfinder := Pathfinder.new()
 
-var _current_cell = null
+var _current_cell: Vector2
+var _current_path: Array
 
 var actor: Actor setget set_current_actor
 
@@ -17,8 +18,6 @@ func set_current_actor(value: Actor) -> void:
 	actor = value
 
 	set_process_unhandled_input(actor != null)
-
-	_current_cell = null
 
 	if value:
 		_pathfinder.actor = value
@@ -30,6 +29,7 @@ func set_current_actor(value: Actor) -> void:
 		_start_draw_path(cell)
 	else:
 		_pathfinder.clear()
+		_current_path.clear()
 		clear()
 
 func _ready() -> void:
@@ -40,29 +40,33 @@ func _unhandled_input(event: InputEvent) -> void:
 		var coords: Vector2 = event.position
 		var cell := world_to_map(coords)
 		_start_draw_path(cell)
+	if event is InputEventMouseButton and event.pressed and \
+			(event.button_index == BUTTON_LEFT) and (_current_path.size() > 0):
+		print(_current_path)
 
 func _start_draw_path(cell: Vector2) -> void:
 	if cell:
 		if _current_cell != cell:
 			_current_cell = cell
+			_current_path.clear()
 			clear()
 
 			if (cell != actor.cell_position) and _pathfinder.has_cell(cell):
 				_draw_path(cell)
 	else:
+		_current_path.clear()
 		clear()
-		_current_cell = null
 
 func _draw_path(cell: Vector2) -> void:
-	var path := _pathfinder.get_path(actor.cell_position, cell)
-	if path.size() > 0:
-		assert(path.size() >= 2)
+	_current_path = _pathfinder.get_path(actor.cell_position, cell)
+	if _current_path.size() > 0:
+		assert(_current_path.size() >= 2)
 
-		_draw_path_start(path[0], path[1])
-		_draw_path_end(path[ path.size() - 1 ], path[ path.size() - 2] )
+		_draw_path_start(_current_path[0], _current_path[1])
+		_draw_path_end(_current_path[ _current_path.size() - 1 ], _current_path[ _current_path.size() - 2] )
 
-		for i in range(1, path.size() - 1):
-			_draw_path_middle(path[i - 1], path[i], path[i + 1])
+		for i in range(1, _current_path.size() - 1):
+			_draw_path_middle(_current_path[i - 1], _current_path[i], _current_path[i + 1])
 
 func _draw_path_start(start: Vector2, next: Vector2) -> void:
 	var direction := Direction.get_closest_direction_diff(start, next)

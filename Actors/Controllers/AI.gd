@@ -58,7 +58,7 @@ func _get_move_action(target: Actor) -> MoveAction:
 
 		if get_map().actor_can_enter_cell(get_actor(), path[1] as Vector2,
 				false):
-			var did := Direction.get_closest_direction(
+			var did := Direction.get_closest_direction_diff(
 					get_actor().cell_position, path[1])
 
 			result = MoveActionScene.instance() as MoveAction

@@ -11,7 +11,7 @@ func _ready() -> void:
 	._ready()
 	set_process_unhandled_input(false)
 
-func _input(_event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed('move_north'):
 		_try_move(Direction.NORTH)
 	elif Input.is_action_pressed('move_east'):

@@ -3,6 +3,7 @@ extends Node
 onready var stamina := $GUI/Stamina as Range
 
 onready var map := $MapContainer/Map as Map
+onready var overlay := $MapContainer/PathOverlay
 onready var turn_processor := $TurnProcessor as TurnProcessor
 
 onready var hero := $MapContainer/Map/Hero as Actor
@@ -26,3 +27,9 @@ func _actor_died(actor: Actor) -> void:
 	map.remove_child(actor)
 	if actor == hero:
 		turn_processor.running = false
+
+func _on_Hero_turn_started() -> void:
+	overlay.actor = hero
+
+func _on_Hero_turn_ended() -> void:
+	overlay.actor = null

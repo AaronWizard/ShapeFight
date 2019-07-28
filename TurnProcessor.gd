@@ -26,8 +26,12 @@ func run(map: Map) -> void:
 				or _actor_has_action_running(actor)):
 			yield(self, '_actions_finished')
 
+		actor.emit_signal("turn_started")
+
 		controller.call_deferred('get_action')
 		var action: ActorAction = yield(controller, 'got_action')
+
+		actor.emit_signal("turn_ended")
 
 		if action:
 			if action.concurrent:

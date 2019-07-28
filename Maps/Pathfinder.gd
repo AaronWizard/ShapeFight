@@ -11,6 +11,11 @@ func rebuild() -> void:
 	_add_traversable_cells()
 	_connect_traversable_cells()
 
+func clear() -> void:
+	map = null
+	actor = null
+	_astar.clear()
+
 func has_cell(cell: Vector2) -> bool:
 	#warning-ignore:narrowing_conversion
 	#warning-ignore:narrowing_conversion

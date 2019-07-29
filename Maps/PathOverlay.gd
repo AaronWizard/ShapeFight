@@ -1,5 +1,7 @@
 extends TileMap
 
+signal clicked_for_path(path)
+
 enum TileIDs {
 	END_NORTH, END_EAST, END_SOUTH, END_WEST,
 	START_NORTH, START_EAST, START_SOUTH, START_WEST,
@@ -44,7 +46,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		_start_draw_path(cell)
 	if event is InputEventMouseButton and event.pressed and \
 			(event.button_index == BUTTON_LEFT) and (_current_path.size() > 0):
-		print(_current_path)
+		assert(_current_path.size() >= 2)
+		emit_signal("clicked_for_path", _current_path)
 
 func _start_draw_path(cell: Vector2) -> void:
 	if cell:

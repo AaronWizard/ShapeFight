@@ -18,7 +18,7 @@ func _set_actor_events() -> void:
 	for a in map.get_actors():
 		var actor := a as Actor
 		#warning-ignore:return_value_discarded
-		actor.connect("died", self, '_actor_died', [actor])
+		actor.connect('died', self, '_actor_died', [actor])
 
 func _on_Hero_took_damage(damage: int) -> void:
 	stamina.value -= damage
@@ -30,6 +30,9 @@ func _actor_died(actor: Actor) -> void:
 
 func _on_Hero_turn_started() -> void:
 	overlay.actor = hero
+	# warning-ignore:return_value_discarded
+	overlay.connect('clicked_for_path', hero.controller, 'receive_walk_path')
 
 func _on_Hero_turn_ended() -> void:
 	overlay.actor = null
+	overlay.disconnect('clicked_for_path', hero.controller, 'receive_walk_path')

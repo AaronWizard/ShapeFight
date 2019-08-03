@@ -27,7 +27,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 		emit_signal('_input_processed', null)
 
 func receive_walk_path(path: Array) -> void:
-	print('path received')
 	assert( is_processing_unhandled_input() )
 	_walk_path.clear()
 	_walk_path += path # Make sure items in path are copied
@@ -63,19 +62,16 @@ func _try_walk_path() -> void:
 		_walk_path.pop_front()
 
 		if get_map().actor_can_enter_cell(get_actor(), cell, false):
-			print('doing move')
 			var direction := Direction.get_closest_direction_diff(
 					get_actor().cell_position, cell)
 			_create_move_action(direction)
-		else:
-			print('blocked')
-	else:
-		print('walk finished')
 
 func get_action() -> void:
 	set_process_unhandled_input(true)
-	_try_walk_path()
+
+	call_deferred('_try_walk_path')
 	var action : ActorAction = yield(self, '_input_processed')
+
 	set_process_unhandled_input(false)
 
 	emit_signal('got_action', action)

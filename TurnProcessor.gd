@@ -2,6 +2,9 @@ extends Node
 
 class_name TurnProcessor
 
+signal turn_started(actor)
+signal turn_ended(actor)
+
 signal _actions_finished
 
 var running := false
@@ -26,12 +29,12 @@ func run(map: Map) -> void:
 				or _actor_has_action_running(actor)):
 			yield(self, '_actions_finished')
 
-		actor.emit_signal("turn_started")
+		emit_signal("turn_started", actor)
 
 		controller.call_deferred('get_action')
 		var action: ActorAction = yield(controller, 'got_action')
 
-		actor.emit_signal("turn_ended")
+		emit_signal("turn_ended", actor)
 
 		if action:
 			if action.concurrent:

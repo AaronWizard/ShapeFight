@@ -28,11 +28,13 @@ func _actor_died(actor: Actor) -> void:
 	if actor == hero:
 		turn_processor.running = false
 
-func _on_Hero_turn_started() -> void:
-	overlay.actor = hero
-	# warning-ignore:return_value_discarded
-	overlay.connect('clicked_for_path', hero.controller, 'receive_walk_path')
+func _on_TurnProcessor_turn_started(actor) -> void:
+	if actor == hero:
+		overlay.actor = hero
+		# warning-ignore:return_value_discarded
+		overlay.connect('clicked_for_path', hero.controller, 'receive_walk_path')
 
-func _on_Hero_turn_ended() -> void:
-	overlay.actor = null
-	overlay.disconnect('clicked_for_path', hero.controller, 'receive_walk_path')
+func _on_TurnProcessor_turn_ended(actor) -> void:
+	if actor == hero:
+		overlay.actor = null
+		overlay.disconnect('clicked_for_path', hero.controller, 'receive_walk_path')

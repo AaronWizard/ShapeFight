@@ -3,12 +3,6 @@ extends TileObject
 
 class_name Actor
 
-# Called by turn processor
-# warning-ignore:unused_signal
-signal turn_started
-# warning-ignore:unused_signal
-signal turn_ended
-
 signal took_damage(damage)
 signal died
 

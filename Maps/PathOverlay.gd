@@ -9,10 +9,16 @@ enum TileIDs {
 	TURN_SOUTH_AND_EAST, TURN_SOUTH_AND_WEST, TURN_NORTH_AND_WEST, TURN_NORTH_AND_EAST
 }
 
+enum {
+	DRAWING_PATH, RUNNING_PATH
+}
+
 onready var _pathfinder := Pathfinder.new()
 
 var _current_cell: Vector2
 var _current_path: Array
+
+var _state: int
 
 var actor: Actor setget set_current_actor
 
@@ -38,14 +44,14 @@ func set_current_actor(value: Actor) -> void:
 
 func _ready() -> void:
 	set_process_unhandled_input(false)
+	_state = DRAWING_PATH
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var coords: Vector2 = event.position
 		var cell := world_to_map(coords)
 		_start_draw_path(cell)
-	if event is InputEventMouseButton and event.pressed and \
-			(event.button_index == BUTTON_LEFT) and (_current_path.size() > 0):
+	if Input.is_action_just_pressed("click") and (_current_path.size() > 0):
 		assert(_current_path.size() >= 2)
 		emit_signal("clicked_for_path", _current_path)
 

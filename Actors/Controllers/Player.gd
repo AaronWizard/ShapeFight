@@ -83,6 +83,8 @@ func _try_walk_path() -> ActorAction:
 			var direction := Direction.get_closest_direction_diff(
 					get_actor().cell_position, cell)
 			action = _create_move_action(direction)
+		else:
+			_walk_path.clear()
 
 	return action
 

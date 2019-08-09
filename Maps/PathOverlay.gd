@@ -9,16 +9,10 @@ enum TileIDs {
 	TURN_SOUTH_AND_EAST, TURN_SOUTH_AND_WEST, TURN_NORTH_AND_WEST, TURN_NORTH_AND_EAST
 }
 
-enum {
-	DRAWING_PATH, RUNNING_PATH
-}
-
 onready var _pathfinder := Pathfinder.new()
 
 var _current_cell: Vector2
 var _current_path: Array
-
-var _state: int
 
 var actor: Actor setget set_current_actor
 
@@ -44,7 +38,6 @@ func set_current_actor(value: Actor) -> void:
 
 func _ready() -> void:
 	set_process_unhandled_input(false)
-	_state = DRAWING_PATH
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

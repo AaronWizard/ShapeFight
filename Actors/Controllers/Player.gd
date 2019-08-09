@@ -7,41 +7,69 @@ const AttackActionScene := preload('res://Actors/Actions/AttackAction.tscn')
 
 signal _input_processed(action)
 
+var _taking_turn: bool
+
 var _walk_path: Array
+var _auto_steps: int
 
 func _ready() -> void:
 	._ready()
-	set_process_unhandled_input(false)
+	_taking_turn = false
 	_walk_path = []
+	_auto_steps = 0
 
 func _unhandled_input(_event: InputEvent) -> void:
-	var action: ActorAction = null
-	var is_waiting := false
+	_handle_keyboard_input()
+	_handle_mouse_input()
 
-	if Input.is_action_pressed('move_north'):
-		action = _try_move(Direction.NORTH)
-	elif Input.is_action_pressed('move_east'):
-		action = _try_move(Direction.EAST)
-	elif Input.is_action_pressed('move_south'):
-		action = _try_move(Direction.SOUTH)
-	elif Input.is_action_pressed('move_west'):
-		action = _try_move(Direction.WEST)
-	elif Input.is_action_just_pressed('wait'):
-		is_waiting = true
+func _handle_keyboard_input() -> void:
+	if _taking_turn:
+		var is_waiting := false
+		var action: ActorAction = null
 
-	if action or is_waiting:
-		emit_signal('_input_processed', action)
+		if Input.is_action_pressed('move_north'):
+			action = _try_move(Direction.NORTH)
+		elif Input.is_action_pressed('move_east'):
+			action = _try_move(Direction.EAST)
+		elif Input.is_action_pressed('move_south'):
+			action = _try_move(Direction.SOUTH)
+		elif Input.is_action_pressed('move_west'):
+			action = _try_move(Direction.WEST)
+		elif Input.is_action_just_pressed('wait'):
+			is_waiting = true
+
+		if action or is_waiting:
+			emit_signal('_input_processed', action)
+	elif _can_cancel_auto_walk():
+		_cancel_auto_walk()
+
+func _handle_mouse_input() -> void:
+	if Input.is_action_pressed("click") and _can_cancel_auto_walk():
+		_cancel_auto_walk()
+
+func _can_cancel_auto_walk() -> bool:
+	return (_walk_path.size() > 0) and (_auto_steps > 1)
+
+func _cancel_auto_walk() -> void:
+	_walk_path.clear()
+	_auto_steps = 0
 
 func receive_walk_path(path: Array) -> void:
 	assert( is_processing_unhandled_input() )
+
+	_auto_steps = 0
+
 	_walk_path.clear()
 	_walk_path += path # Make sure items in path are copied
+
 	assert(_walk_path.front() == get_actor().cell_position)
+
 	_walk_path.pop_front()
 
-	var action := _try_walk_path()
-	if action:
-		emit_signal('_input_processed', action)
+	if _taking_turn:
+		var action := _try_walk_path()
+		if action:
+			emit_signal('_input_processed', action)
 
 func _try_move(direction: int) -> ActorAction:
 	var action: ActorAction = null
@@ -83,20 +111,23 @@ func _try_walk_path() -> ActorAction:
 			var direction := Direction.get_closest_direction_diff(
 					get_actor().cell_position, cell)
 			action = _create_move_action(direction)
+			_auto_steps += 1
 		else:
 			_walk_path.clear()
+
+		if _walk_path.size() == 0:
+			_auto_steps = 0
 
 	return action
 
 func get_action() -> void:
+	_taking_turn = true
+
 	var action: ActorAction = null
-
-	set_process_unhandled_input(true)
-
 	action = _try_walk_path()
 	if not action:
 		action = yield(self, '_input_processed')
 
-	set_process_unhandled_input(false)
+	_taking_turn = false
 
 	emit_signal('got_action', action)

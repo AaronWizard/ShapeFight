@@ -19,12 +19,12 @@ func _ready() -> void:
 	_auto_steps = 0
 
 func _unhandled_input(event: InputEvent) -> void:
-	_handle_keyboard_input()
+	_handle_keyboard_input(event)
 
 	if event is InputEventMouseButton:
 		_handle_mouse_input(event.position)
 
-func _handle_keyboard_input() -> void:
+func _handle_keyboard_input(event: InputEvent) -> void:
 	if _taking_turn:
 		var is_waiting := false
 		var action: ActorAction = null
@@ -42,8 +42,12 @@ func _handle_keyboard_input() -> void:
 
 		if action or is_waiting:
 			emit_signal('_input_processed', action)
-	elif _can_cancel_auto_walk():
-		_cancel_auto_walk()
+
+	if _can_cancel_auto_walk():
+		var is_key_down := event is InputEventKey and (event as InputEventKey).pressed
+		var is_mouse_down := event is InputEventMouseButton and (event as InputEventMouseButton).pressed
+		if is_key_down or is_mouse_down:
+			_cancel_auto_walk()
 
 func _handle_mouse_input(click_position: Vector2) -> void:
 	if Input.is_action_pressed("click"):

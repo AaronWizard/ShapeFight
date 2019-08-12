@@ -48,25 +48,30 @@ func _handle_keyboard_input() -> void:
 func _handle_mouse_input(click_position: Vector2) -> void:
 	if Input.is_action_pressed("click"):
 		if _taking_turn:
-			_handle_click_attack(click_position)
+			_handle_click(click_position)
 		if _can_cancel_auto_walk():
 			_cancel_auto_walk()
 
-func _handle_click_attack(click_position: Vector2) -> void:
+func _handle_click(click_position: Vector2) -> void:
 	var cell := get_map().world_to_map(click_position)
 
-	var other_actor := get_map().get_actor_at_cell(cell)
-	if (other_actor != null) and (other_actor != get_actor()) \
-			and get_actor().is_adjacent(other_actor):
-		var action := AttackActionScene.instance() as AttackAction
-		action.actor = get_actor()
-		action.target = other_actor
-		emit_signal('_input_processed', action)
-
-	if cell in get_actor().adjacent_cells():
-		var action: = _try_attack(cell)
-		if action:
+	if cell == get_actor().cell_position:
+		# Wait
+		emit_signal('_input_processed', null)
+	else:
+		# Attack
+		var other_actor := get_map().get_actor_at_cell(cell)
+		if (other_actor != null) and (other_actor != get_actor()) \
+				and get_actor().is_adjacent(other_actor):
+			var action := AttackActionScene.instance() as AttackAction
+			action.actor = get_actor()
+			action.target = other_actor
 			emit_signal('_input_processed', action)
+
+		if cell in get_actor().adjacent_cells():
+			var action: = _try_attack(cell)
+			if action:
+				emit_signal('_input_processed', action)
 
 func _can_cancel_auto_walk() -> bool:
 	return (_walk_path.size() > 0) and (_auto_steps > 1)

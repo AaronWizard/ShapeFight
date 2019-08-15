@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://Resources/Shaders/GameOverTransitionShader.shader" type="Shader" id=1]
+[ext_resource path="res://Assets/Graphics/Effects/noise.png" type="Texture" id=2]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/cutoff = 1.0
+shader_param/mask = ExtResource( 2 )

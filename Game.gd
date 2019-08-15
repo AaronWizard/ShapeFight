@@ -1,5 +1,7 @@
 extends Node
 
+onready var game_over_transition := $Transitions/GameOverTransition
+
 onready var stamina := $GUI/Stamina as Range
 
 onready var map := $MapContainer/Map as Map
@@ -22,6 +24,9 @@ func _set_actor_events() -> void:
 
 func _on_Hero_took_damage(damage: int) -> void:
 	stamina.value -= damage
+	if hero.stats.stamina <= 0:
+		game_over_transition.show()
+		game_over_transition.play()
 
 func _actor_died(actor: Actor) -> void:
 	map.remove_child(actor)

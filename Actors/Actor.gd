@@ -11,7 +11,7 @@ enum Faction { PLAYER, ENEMY }
 export(Faction) var faction := Faction.ENEMY
 
 #warning-ignore:unused_class_variable
-onready var stats = $Stats as Stats
+onready var stats := $Stats as Stats
 
 var controller = null setget set_controller # ActorController
 

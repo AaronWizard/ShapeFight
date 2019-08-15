@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
-[ext_resource path="res://Resources/BasicTileSet.tres" type="TileSet" id=2]
+[ext_resource path="res://Resources/Tilesets/BasicTileSet.tres" type="TileSet" id=2]
 [ext_resource path="res://Maps/Map.gd" type="Script" id=3]
 [ext_resource path="res://Maps/Tiles/BasicTileSetData.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Actors/Types/Hero.tscn" type="PackedScene" id=5]

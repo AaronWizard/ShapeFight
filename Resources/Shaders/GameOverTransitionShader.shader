@@ -6,7 +6,23 @@ uniform sampler2D mask : hint_albedo;
 
 void fragment()
 {
+	float redrange = 0.1;
+
 	float value = texture(mask, UV).r;
-	float alpha = step(cutoff, value);
-	COLOR = vec4(COLOR.rgb, alpha);
+	
+	if (value < cutoff)
+	{
+		if ((cutoff < (1.0 - redrange)) && (value > (cutoff - redrange)))
+		{
+			COLOR = vec4(1.0, 0.0, 0.0, 1.0);
+		}
+		else
+		{
+			COLOR = vec4(0.0, 0.0, 0.0, 1.0);
+		}
+	}
+	else
+	{
+		COLOR = vec4(0.0, 0.0, 0.0, 0.0);
+	}
 }

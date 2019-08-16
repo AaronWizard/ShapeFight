@@ -1,7 +1,7 @@
 extends Node
 
 # warning-ignore:unused_class_variable
-export(PackedScene) var game_over_scene
+export(String, FILE, '*.tscn') var game_over_scene
 
 onready var game_over_transition := $Transitions/GameOverTransition
 
@@ -51,4 +51,4 @@ func _game_over() -> void:
 	game_over_transition.play()
 	yield(game_over_transition, 'animation_finished')
 
-	assert(get_tree().change_scene_to(game_over_scene) == OK)
+	assert(get_tree().change_scene(game_over_scene) == OK)

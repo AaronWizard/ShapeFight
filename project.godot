@@ -121,10 +121,6 @@ window/stretch/aspect="keep"
 
 enabled=PoolStringArray( "TileObjectSnapping" )
 
-[gui]
-
-theme/custom="res://Resources/theme.tres"
-
 [importer_defaults]
 
 texture={

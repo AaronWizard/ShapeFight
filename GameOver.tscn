@@ -17,25 +17,25 @@ main_menu_scene = "res://MainMenu.tscn"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 margin_right = 288.0
-margin_bottom = 108.0
+margin_bottom = 148.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="GameOverText" type="Label" parent="CenterContainer"]
 margin_left = 36.0
-margin_top = 42.0
+margin_top = 62.0
 margin_right = 252.0
-margin_bottom = 66.0
+margin_bottom = 86.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 3 )
 text = "Game Over"
 align = 1
 valign = 1
 
-[node name="ButtonMenu" type="VBoxContainer" parent="."]
-margin_left = 104.0
-margin_top = 112.0
-margin_right = 184.0
+[node name="ButtonMenu" type="HBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 152.0
+margin_right = 268.0
 margin_bottom = 168.0
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -44,21 +44,24 @@ alignment = 1
 [node name="Reload" type="Button" parent="ButtonMenu"]
 margin_right = 80.0
 margin_bottom = 16.0
+rect_min_size = Vector2( 80, 0 )
 size_flags_vertical = 0
 text = "Reload"
 
 [node name="MainMenu" type="Button" parent="ButtonMenu"]
-margin_top = 20.0
-margin_right = 80.0
-margin_bottom = 36.0
+margin_left = 84.0
+margin_right = 164.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 80, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Main Menu"
 
 [node name="Quit" type="Button" parent="ButtonMenu"]
-margin_top = 40.0
-margin_right = 80.0
-margin_bottom = 56.0
+margin_left = 168.0
+margin_right = 248.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 80, 0 )
 size_flags_vertical = 0
 text = "Quit"
 [connection signal="pressed" from="ButtonMenu/Reload" to="." method="_on_Reload_pressed"]

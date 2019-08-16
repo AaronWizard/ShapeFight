@@ -121,6 +121,10 @@ window/stretch/aspect="keep"
 
 enabled=PoolStringArray( "TileObjectSnapping" )
 
+[gui]
+
+theme/custom="res://Resources/theme.tres"
+
 [importer_defaults]
 
 texture={
@@ -183,4 +187,5 @@ click={
 
 [rendering]
 
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"

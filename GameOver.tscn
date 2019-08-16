@@ -1,4 +1,6 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Resources/Fonts/font_title.tres" type="DynamicFont" id=1]
 
 [node name="GameOver" type="Node"]
 
@@ -7,8 +9,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -36.5
-margin_top = -7.0
-margin_right = 36.5
-margin_bottom = 7.0
+margin_left = -110.0
+margin_top = -14.0
+margin_right = 110.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 1 )
 text = "Game Over"

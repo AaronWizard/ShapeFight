@@ -153,7 +153,8 @@ margin_bottom = 16.0
 text = "Load"
 
 [node name="Delete" type="Button" parent="VBoxContainer/Buttons"]
-margin_left = 92.0
-margin_right = 150.0
+margin_left = 165.0
+margin_right = 223.0
 margin_bottom = 16.0
+size_flags_horizontal = 10
 text = "Delete"

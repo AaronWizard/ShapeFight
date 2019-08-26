@@ -1,0 +1,53 @@
+[gd_resource type="Theme" load_steps=6 format=2]
+
+[ext_resource path="res://Resources/Themes/button_normal_stylebox.tres" type="StyleBox" id=1]
+[ext_resource path="res://Resources/Themes/button_pressed_stylebox.tres" type="StyleBox" id=2]
+[ext_resource path="res://Resources/Themes/scroll_grabber_stylebox.tres" type="StyleBox" id=3]
+[ext_resource path="res://Resources/Themes/panel_stylebox.tres" type="StyleBox" id=4]
+[ext_resource path="res://Resources/Fonts/font_main.tres" type="DynamicFont" id=5]
+
+[resource]
+default_font = ExtResource( 5 )
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 4
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = ExtResource( 1 )
+Button/styles/normal = ExtResource( 1 )
+Button/styles/pressed = ExtResource( 2 )
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/styles/grabber = ExtResource( 3 )
+HScrollBar/styles/grabber_highlight = ExtResource( 3 )
+HScrollBar/styles/grabber_pressed = ExtResource( 3 )
+HScrollBar/styles/scroll = ExtResource( 4 )
+HScrollBar/styles/scroll_focus = null
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 4
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = null
+Label/styles/normal = null
+Panel/styles/panel = ExtResource( 4 )
+Panel/styles/panelf = null
+Panel/styles/panelnc = null
+PanelContainer/styles/panel = ExtResource( 4 )
+ScrollContainer/styles/bg = ExtResource( 4 )
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = ExtResource( 3 )
+VScrollBar/styles/grabber_highlight = ExtResource( 3 )
+VScrollBar/styles/grabber_pressed = ExtResource( 3 )
+VScrollBar/styles/scroll = ExtResource( 4 )
+VScrollBar/styles/scroll_focus = null

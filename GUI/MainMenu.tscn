@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Resources/Themes/theme.tres" type="Theme" id=1]
-[ext_resource path="res://MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://GUI/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://Resources/Fonts/font_title.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/Graphics/GUI/title_image.png" type="Texture" id=4]
 

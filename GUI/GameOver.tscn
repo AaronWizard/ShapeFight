@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Resources/Themes/theme.tres" type="Theme" id=1]
-[ext_resource path="res://GameOver.gd" type="Script" id=2]
+[ext_resource path="res://GUI/GameOver.gd" type="Script" id=2]
 [ext_resource path="res://Resources/Fonts/font_title.tres" type="DynamicFont" id=3]
 
 [node name="GameOver" type="VBoxContainer"]
@@ -13,7 +13,7 @@ margin_right = -16.0
 margin_bottom = -16.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
-main_menu_scene = "res://MainMenu.tscn"
+main_menu_scene = "res://GUI/MainMenu.tscn"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 margin_right = 288.0

@@ -1,16 +1,17 @@
-[gd_resource type="Theme" load_steps=8 format=2]
+[gd_resource type="Theme" load_steps=9 format=2]
 
 [ext_resource path="res://Resources/Themes/button_disabled_stylebox.tres" type="StyleBox" id=1]
 [ext_resource path="res://Resources/Themes/button_normal_stylebox.tres" type="StyleBox" id=2]
 [ext_resource path="res://Resources/Themes/button_pressed_stylebox.tres" type="StyleBox" id=3]
 [ext_resource path="res://Resources/Themes/scroll_grabber_stylebox.tres" type="StyleBox" id=4]
-[ext_resource path="res://Resources/Themes/panel_stylebox.tres" type="StyleBox" id=5]
-[ext_resource path="res://Resources/Fonts/font_main.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Resources/Themes/scroll_bar_stylebox.tres" type="StyleBox" id=5]
+[ext_resource path="res://Resources/Themes/panel_stylebox.tres" type="StyleBox" id=6]
+[ext_resource path="res://Resources/Fonts/font_main.tres" type="DynamicFont" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [resource]
-default_font = ExtResource( 6 )
+default_font = ExtResource( 7 )
 Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/colors/font_color_disabled = Color( 0.607843, 0.678431, 0.717647, 1 )
 Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -40,11 +41,11 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/fonts/font = null
 Label/styles/normal = null
-Panel/styles/panel = ExtResource( 5 )
+Panel/styles/panel = ExtResource( 6 )
 Panel/styles/panelf = null
 Panel/styles/panelnc = null
-PanelContainer/styles/panel = ExtResource( 5 )
-ScrollContainer/styles/bg = ExtResource( 5 )
+PanelContainer/styles/panel = ExtResource( 6 )
+ScrollContainer/styles/bg = ExtResource( 6 )
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null

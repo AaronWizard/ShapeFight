@@ -4,7 +4,6 @@
 [ext_resource path="res://GameOver.gd" type="Script" id=2]
 [ext_resource path="res://Resources/Fonts/font_title.tres" type="DynamicFont" id=3]
 
-
 [node name="GameOver" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -34,35 +33,34 @@ align = 1
 valign = 1
 
 [node name="ButtonMenu" type="HBoxContainer" parent="."]
-margin_left = 20.0
+margin_left = 17.0
 margin_top = 152.0
-margin_right = 268.0
+margin_right = 271.0
 margin_bottom = 168.0
 size_flags_horizontal = 4
 size_flags_vertical = 8
 alignment = 1
 
 [node name="Reload" type="Button" parent="ButtonMenu"]
-margin_right = 80.0
+margin_right = 82.0
 margin_bottom = 16.0
-rect_min_size = Vector2( 80, 0 )
+rect_min_size = Vector2( 82, 0 )
 size_flags_vertical = 0
 text = "Reload"
 
 [node name="MainMenu" type="Button" parent="ButtonMenu"]
-margin_left = 84.0
-margin_right = 164.0
+margin_left = 86.0
+margin_right = 168.0
 margin_bottom = 16.0
-rect_min_size = Vector2( 80, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Main Menu"
 
 [node name="Quit" type="Button" parent="ButtonMenu"]
-margin_left = 168.0
-margin_right = 248.0
+margin_left = 172.0
+margin_right = 254.0
 margin_bottom = 16.0
-rect_min_size = Vector2( 80, 0 )
+rect_min_size = Vector2( 82, 0 )
 size_flags_vertical = 0
 text = "Quit"
 [connection signal="pressed" from="ButtonMenu/Reload" to="." method="_on_Reload_pressed"]

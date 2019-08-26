@@ -42,38 +42,37 @@ size_flags_horizontal = 4
 text = "AaronWizard, 2019"
 
 [node name="Buttons" type="HBoxContainer" parent="."]
-margin_left = 10.0
+margin_left = 6.0
 margin_top = 152.0
-margin_right = 278.0
+margin_right = 282.0
 margin_bottom = 168.0
 size_flags_horizontal = 4
 size_flags_vertical = 10
 
 [node name="Start" type="Button" parent="Buttons"]
-margin_right = 64.0
+margin_right = 66.0
 margin_bottom = 16.0
-rect_min_size = Vector2( 64, 0 )
+rect_min_size = Vector2( 66, 0 )
 text = "Start"
 
 [node name="Load" type="Button" parent="Buttons"]
-margin_left = 68.0
-margin_right = 132.0
+margin_left = 70.0
+margin_right = 136.0
 margin_bottom = 16.0
-rect_min_size = Vector2( 64, 0 )
+rect_min_size = Vector2( 66, 0 )
 text = "Load"
 
 [node name="Options" type="Button" parent="Buttons"]
-margin_left = 136.0
-margin_right = 200.0
+margin_left = 140.0
+margin_right = 206.0
 margin_bottom = 16.0
-rect_min_size = Vector2( 64, 0 )
 text = "Options"
 
 [node name="Quit" type="Button" parent="Buttons"]
-margin_left = 204.0
-margin_right = 268.0
+margin_left = 210.0
+margin_right = 276.0
 margin_bottom = 16.0
-rect_min_size = Vector2( 64, 0 )
+rect_min_size = Vector2( 66, 0 )
 text = "Quit"
 [connection signal="pressed" from="Buttons/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Buttons/Load" to="." method="_on_Load_pressed"]
